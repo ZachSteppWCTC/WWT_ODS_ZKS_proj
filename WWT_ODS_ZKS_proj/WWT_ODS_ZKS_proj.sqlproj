@@ -13,7 +13,7 @@
     </RootPath>
     <RootNamespace>WWT_ODS_ZKS_proj</RootNamespace>
     <AssemblyName>WWT_ODS_ZKS_proj</AssemblyName>
-    <ModelCollation>1033, CI</ModelCollation>
+    <ModelCollation>1033,CI</ModelCollation>
     <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
     <DeployToDatabase>True</DeployToDatabase>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
@@ -22,6 +22,8 @@
     <SqlServerVerification>False</SqlServerVerification>
     <IncludeCompositeObjects>True</IncludeCompositeObjects>
     <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DefaultCollation>SQL_Latin1_General_CP1_CI_AS</DefaultCollation>
+    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\Release\</OutputPath>
@@ -56,5 +58,39 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Tables\" />
+    <Folder Include="dbo\Stored Procedures\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Tables\Orders.sql" />
+    <Build Include="dbo\Tables\OrderDetails.sql" />
+    <Build Include="dbo\Tables\Customer_Lookup.sql" />
+    <Build Include="dbo\Tables\Address.sql" />
+    <Build Include="dbo\Tables\Customers.sql" />
+    <Build Include="dbo\Tables\SourceTrader.sql" />
+    <Build Include="dbo\Tables\Employees.sql" />
+    <Build Include="dbo\Tables\Category.sql" />
+    <Build Include="dbo\Tables\Suppliers.sql" />
+    <Build Include="dbo\Tables\Products.sql" />
+    <Build Include="dbo\Tables\Shippers.sql" />
+    <Build Include="dbo\Tables\stg_Shippers.sql" />
+    <Build Include="dbo\Tables\stg_Category.sql" />
+    <Build Include="dbo\Tables\stg_Products.sql" />
+    <Build Include="dbo\Tables\stg_Employees.sql" />
+    <Build Include="dbo\Tables\stg_Supplier.sql" />
+    <Build Include="dbo\Tables\stg_Customer.sql" />
+    <Build Include="dbo\Tables\stg_Orders.sql" />
+    <Build Include="dbo\Tables\stg_OrderDetails.sql" />
+    <Build Include="dbo\Stored Procedures\ETL_LoadCategory.sql" />
+    <Build Include="dbo\Stored Procedures\ETL_LoadShippers.sql" />
+    <Build Include="dbo\Stored Procedures\ETL_LoadAddresses.sql" />
+    <Build Include="dbo\Stored Procedures\ETL_LoadEmployees.sql" />
+    <Build Include="dbo\Stored Procedures\ETL_LoadSuppliers.sql" />
+    <Build Include="dbo\Stored Procedures\ETL_LoadProducts.sql" />
+    <Build Include="dbo\Stored Procedures\ETL_LoadCustomers.sql" />
+    <Build Include="dbo\Stored Procedures\ETL_LoadOrders.sql" />
+    <Build Include="dbo\Stored Procedures\ETL_LoadOrderDetails.sql" />
+    <Build Include="dbo\Stored Procedures\ETL_Control.sql" />
   </ItemGroup>
 </Project>

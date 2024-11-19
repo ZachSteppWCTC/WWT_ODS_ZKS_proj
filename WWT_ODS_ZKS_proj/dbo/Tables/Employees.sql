@@ -1,0 +1,26 @@
+﻿CREATE TABLE [dbo].[Employees] (
+    [ODSEmployeeID]   INT            IDENTITY (1, 1) NOT NULL,
+    [SourceID]        INT            NOT NULL,
+    [orig_EmployeeID] INT            NOT NULL,
+    [LastName]        VARCHAR (20)   NOT NULL,
+    [FirstName]       VARCHAR (20)   NOT NULL,
+    [JobTitle]        VARCHAR (30)   NULL,
+    [Title]           VARCHAR (25)   NULL,
+    [BirthDate]       DATE           NULL,
+    [HireDate]        DATE           NULL,
+    [TerminationDate] DATE           NULL,
+    [isActive]        BIT            NULL,
+    [AddressID]       INT            NULL,
+    [HomePhone]       VARCHAR (24)   NULL,
+    [Extension]       VARCHAR (4)    NULL,
+    [EmailAddress]    VARCHAR (100)  NULL,
+    [Notes]           VARCHAR (1028) NULL,
+    [ReportsTo]       INT            NULL,
+    PRIMARY KEY CLUSTERED ([ODSEmployeeID] ASC),
+    CONSTRAINT [BirthDate] CHECK ([BirthDate]<[HireDate]),
+    CONSTRAINT [HireDate] CHECK ([HireDate]<[TerminationDate]),
+    CONSTRAINT [FK_Employees.AddressID] FOREIGN KEY ([AddressID]) REFERENCES [dbo].[Address] ([ODSAddressID]),
+    CONSTRAINT [FK_Employees.ReportsTo] FOREIGN KEY ([ReportsTo]) REFERENCES [dbo].[Employees] ([ODSEmployeeID]),
+    CONSTRAINT [FK_Employees.SourceID] FOREIGN KEY ([SourceID]) REFERENCES [dbo].[SourceTrader] ([SourceID])
+);
+
